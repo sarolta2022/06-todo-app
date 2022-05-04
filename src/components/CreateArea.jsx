@@ -3,6 +3,8 @@ import Fab from "@mui/material/Fab";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 const CreateArea = (props) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const [note, setNote] = useState({
     title: "",
     content: "",
@@ -25,21 +27,30 @@ const CreateArea = (props) => {
       content: "",
     });
     event.preventDefault();
+    setIsExpanded(false);
+  };
+
+  const expand = () => {
+    setIsExpanded(true);
   };
 
   return (
     <div>
       <form className="create-note">
-        <input
-          type="text"
-          name="title"
-          onChange={handleChange}
-          value={note.title}
-          placeholder="title"
-        />
+        {isExpanded && (
+          <input
+            type="text"
+            name="title"
+            onChange={handleChange}
+            value={note.title}
+            placeholder="title"
+          />
+        )}
+
         <textarea
           name="content"
-          rows="3"
+          rows={isExpanded ? 3 : 1}
+          onClick={expand}
           onChange={handleChange}
           value={note.content}
           placeholder="take a note"
