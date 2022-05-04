@@ -33,16 +33,16 @@ const CreateArea = (props) => {
         <input
           type="text"
           name="title"
-          placeholder="title"
           onChange={handleChange}
           value={note.title}
+          placeholder="title"
         />
         <textarea
           name="content"
           rows="3"
-          paceholder="take a note"
           onChange={handleChange}
           value={note.content}
+          placeholder="take a note"
         ></textarea>
         <Fab onClick={submitNote}>
           <AddCircleIcon />
